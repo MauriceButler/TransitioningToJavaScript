@@ -1,0 +1,1264 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DDD Brisbane 2012</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="nobackground">
+  <!--  Blank -->
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+    </hgroup>
+      
+    <div class="presenter"><b>Maurice Butler</b></div>
+    <div>@ButlerMaurice</div>
+    <div>Meldr / The Locker Project</div>
+    <div class="presenter"><b>Patrick Klug</b></div>
+    <div>@PatrickKlug</div>
+    <div>Greenheart Games</div>
+    <br/>
+    <div>Live Backchannel: #dddbrisbane</div>
+
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/JavaScript-the-good-parts.jpg)">
+    <footer class="source white">Source: http://bit.ly/V3nZOO</footer>
+  </slide>
+  <slide>
+	<hgroup>
+        <h2>From professional to beginner in one decision.</h2>
+	</hgroup>
+      <article>
+          <ul class="build">
+              <li>Preconceived ideas need to be challenged.
+                  <ul>
+                      <li>I thought JavaScript is slow. It isn't.</li>
+                      <li>I thought JavaScript is unsophisticated. It isn't.</li>
+                  </ul>
+              </li>
+              <li>
+                  Being a beginner again is frustrating. (especially a CSS beginner)
+              </li>
+              <li>A few things which make it easier
+                  <ul>
+                      <li>a very active community</li>
+                      <li>tons of examples</li>
+                      <li>tons of libraries</li>
+                  </ul>
+              </li>
+              <li>HTML/JS is powerful
+                  <ul>
+                      <li>example apps</li>
+                      <li>code visually</li>
+                  </ul>
+              </li>
+          </ul>
+      </article>
+  </slide>
+  <slide>
+    <hgroup>
+      <h2>Where do I start to code?</h2>
+    </hgroup>
+	<article class="smaller">
+        <h3>There is no special entry point. A JS file referenced in HTML is simply executed.</h3>
+        <div class="build">
+        <pre class="prettyprint" data-lang="html">
+&lt;script src="js/myJSFile.js"&gt;&lt;script&gt;
+        </pre>
+        <div>
+            <p>Hint: Don't use self-closing tags. It will not work.</p>
+             <pre class="prettyprint" data-lang="html">
+&lt;script src="js/myJSFile.js"/&gt; //will not load
+        </pre>
+            </div>
+            <div>
+                <h3>You could then start coding in the JS file directly.</h3>
+                <pre class="prettyprint" data-lang="javascript">
+var a = 5 + 10;
+                </pre>
+            </div>
+            <p>But this would place your code into a global scope which is rarely what you want.</p>
+        </div>
+    </article>
+</slide>
+        <slide>
+      <hgroup>
+          <h2>Building blocks</h2>
+      </hgroup>
+      <article class="build">
+          <div>
+          <h3>A few things you need to get started</h3>
+          <pre class="prettyprint" data-lang="javascript">
+//functions
+function foo(){
+};
+
+foo();
+
+var bar = function(){ //function assigned to a variable
+};
+
+bar();
+
+var obj = {};//object
+var person = {name:'Patrick'};
+
+var array = [1,2,3]; //array
+          </pre>
+              </div>
+      </article>
+  </slide>
+  <slide>
+    <hgroup>
+      <h2>Understanding JavaScript with a C# background</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>Scope</li>
+        <li>Types</li>
+        <li>Truthy and Falsey</li>
+        <li>Functions are objects</li>
+        <li>Hoisting</li>
+        <li>Scope Revisited</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="different">
+    <hgroup>
+      <h2>Scope - Dont hate me cause im different</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>Scope in JavaScript works very different than scope in C#</li>
+        <li>Javascript uses Function Scope rather than Block Scope</li>
+        <li>But we will come back to that...</li>
+      </ul>
+      <img src="images/turret.png" >
+      <footer class="source">Source: http://bit.ly/V3ESJa</footer>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Types</h2>
+    </hgroup>
+    <article>
+      <p>JavaScript has only 5 primitive types: </p>
+      <ul class="build">
+        <li>boolean</li>
+        <li>string</li>
+        <li>number</li>
+        <li>null</li>
+        <li>undefined</li> 
+      </ul>      
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Types</h2>
+      <h3>Boolean & String</h3>
+    </hgroup>
+    <article>
+      <p>The JavaScript boolean and string types behave very similarly to their C# counter parts. </p>
+      <p>There are some minor differences, but they are boring and I wont go into those here.</p>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Types</h2>
+      <h3>Number</h3>
+    </hgroup>
+    <article>
+      <p>JavaScript has no float, int, double or any other types to represent numbers</p>
+      <p>All numbers are represented as a 64-bit floating-point double</p>
+      <p>The other interesting point is the 2 valid number values NaN and Infinity. The value NaN (stands for Not a Number) occurs when a value is returned as a number type, but the value is not parseable as a number. This is usually when trying to parse a non numeric string value (such as "abc") to a number. The value infinity occurs when a number exceeds the upper limit of the floating point numbers, which is 1.7976931348623157E+10308.</p>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Types</h2>
+      <h3>Null</h3>
+    </hgroup>
+    <article>
+      <p>The JavaScript null type is similar to the C# Null however it does have one gotcha.</p>
+      <p>When applying the typeof operator to a null value, it will return "object". This is actually completely wrong, and is a mistake that was made very early in the language’s standardisation.</p>
+      <p>It was deemed however that it was too late to fix typeof due to the amount of existing code that would break.</p>
+      
+      <pre class="prettyprint" data-lang="javascript">
+          var x = null;
+          console.log(typeof x);  // object
+      </pre>
+
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Types</h2>
+      <h3>Undefined</h3>
+    </hgroup>
+    <article>
+      <p>The JavaScript undefined type is similar to null, however while null means a variable or property has no value, undefined means that the variable or property does not exist.</p>
+      <p>For a variable it can also mean that the variable was declared but never assigned a value</p>
+      
+      <pre class="prettyprint" data-lang="javascript">
+          var foo;
+          console.log(typeof foo); // undefined
+
+          foo = 123;
+          console.log(typeof foo); // number
+
+          foo = "abc";
+          console.log(typeof foo); // string
+
+          foo = true;
+          console.log(typeof foo); // boolean
+
+          foo = null;
+          console.log(typeof foo); // object
+
+          foo = {};
+          console.log(typeof foo); // object
+
+      </pre>
+
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Types</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+          var foo;
+          console.log(typeof foo); // undefined
+
+          foo = 123;
+          console.log(typeof foo); // number
+
+          foo = "abc";
+          console.log(typeof foo); // string
+
+          foo = true;
+          console.log(typeof foo); // boolean
+
+          foo = null;
+          console.log(typeof foo); // object
+
+          foo = {};
+          console.log(typeof foo); // object
+      </pre>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Truthy and Falsey</h2>
+    </hgroup>
+      
+    <article>
+      <p>In JavaScript any object can be automatically coerced into a boolean representation (i.e. true or false). </p>
+      <p>Anything that exists and has a value will evaluate as true unless the value is false, null, undefined, 0, NaN or an empty string.</p>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Truthy and Falsey</h2>
+    </hgroup>
+      
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+        var foo;
+
+        if(foo) // exists but is undefined -> evaluate as false
+        {
+            console.log(foo); // will not execute
+        }
+
+        foo = "Hello World";
+
+        if(foo) // exists and has a value -> evaluate as true
+        {
+            console.log(foo); // will execute    
+        }
+      </pre>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Truthy and Falsey</h2>
+    </hgroup>
+      
+    <article>
+      <p>We can now use these concepts to write defensive JavaScript, by ensuring variables or properties exist before using them.</p>
+      <pre class="prettyprint" data-lang="javascript">
+        if (someObject && !someObject.foo){
+            someObject.foo = 'foo';
+        }
+
+        console.log(someObject.foo); 
+      </pre>
+      <p>The above code checks if someObject is truthy (not null etc) and if someObject.foo has been defined.</p>
+      <p>If someObject.foo has not been defined it will set it to the string value ‘foo’ before continuing to log it out.</p>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Functions are objects</h2>
+    </hgroup>
+    <article>
+      <p>A function in JavaScript is an object just like any other object. </p>
+      <p>While this concept might not be as huge a deal for someone familiar with Generics and Lambda expressions, it is still a big difference between C# and JavaScript.</p>
+
+      <p>You can do many more weird and wonderful things</p>
+      <ul class="build">
+        <li>Create anonymous functions</li>
+        <li>Assign a function to a variable</li>
+        <li>Pass that variable to another function</li>
+        <li>Change the function object to do other things</li>
+        <li>Parse it as a string</li>
+        <li>And many more</li>
+      <ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Functions are objects</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>
+          <p> Define a function called foo and then call the named function.</p>
+          <pre class="prettyprint" data-lang="javascript">
+            function foo(){ 
+                console.log('bar');
+            }
+
+            foo();  // bar
+          </pre>
+        </li>
+        <li>
+          <p>But how about this?</p>
+           <pre class="prettyprint" data-lang="javascript">
+            var foo = function (){ 
+                console.log('bar');
+            }
+
+            foo();  // bar
+          </pre>
+        </li>
+      <ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Functions are objects</h2>
+    </hgroup>
+    <article>
+      <p>In the second example, we defined an anonymous function and assigned to to the variable foo</p>
+      <p>We now have a variable foo which we can do what we please with</p>
+      <pre class="prettyprint" data-lang="javascript">
+        console.log(foo); // function (){ 
+                          //     console.log('bar');
+                          // }
+
+        foo.randomProperty = "We just added a property to an object";
+
+        console.log(foo.randomProperty); // We just added a property to an object
+      </pre>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Hoisting</h2>
+    </hgroup>
+    <article>
+      <p>When JavaScript is executed, the interpreter moves or “hoists” all variable declarations to the top of their containing function / scope boundary, regardless of where they occur.</p>
+      <pre class="prettyprint" data-lang="javascript">
+        var foo = 'global foo';
+
+        function myFunction() {
+            console.log(foo);
+        }
+
+        myFunction();
+
+      </pre>
+      <p>This code defines a global variable foo and sets its value to ‘global foo’. We then call my function that logs the value of foo.</p>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Hoisting</h2>
+    </hgroup>
+    <article>
+      <p>Now lets change this function so that it logs the global variable and then logs a local version of foo</p>
+      <pre class="prettyprint" data-lang="javascript">
+        var foo = 'global foo';
+
+        function myFunction() {
+            console.log(foo); // undefined
+            var foo = 'local foo';
+            console.log(foo); // local foo
+        }
+
+        myFunction();
+      </pre>
+      <p>Why does the first console.log return undefined?</p>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Hoisting</h2>
+    </hgroup>
+    <article>
+      
+      <p>The code that is actually being executed after hoisting has occurred looks like this</p>
+      <pre class="prettyprint" data-lang="javascript">
+        var foo = 'global foo';
+
+        function myFunction() {
+            var foo;
+            console.log(foo); // undefined
+            foo = 'local foo';
+            console.log(foo); // local foo
+        }
+
+        myFunction();
+
+      </pre>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Scope Revisited</h2>
+    </hgroup>
+    <article>
+      <p>OK, time to talk about scope.</p>
+      <p>In C#, scope is introduced by braces or are "Block Scoped". A variable declared inside a class, function, loop, condition block, etc are available to all members within the blocks braces.</p>
+      <pre class="prettyprint" data-lang="c#">
+public void Method1()
+{
+ var elements = new int[] { 0, 1, 2, 3, 4, 5 }; // available everywhere in the function
+
+ for (var i = 0; i < elements.Length; i++)
+    {
+       var element = elements[i]; // available only within this for loop
+         Console.Write(element);
+    }
+}
+      </pre>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Scope Revisited</h2>
+    </hgroup>
+    <article>
+      <p>In JavaScript however, functions define scope.</p>
+      <p>A variable declared outside of a function is in the global namespace. As in any language, you should try to avoid polluting the global namespace. </p>
+      <p>A variable declared inside a function is visible anywhere within that function but are not visible outside the function.</p>
+      
+      <pre class="prettyprint" data-lang="javascript">
+function Method1(){
+  var elements = [0, 1, 2, 3, 4, 5]; // available everywhere in the function
+           
+  for(var i = 0; i < elements.length; i++) {
+    var element = elements[i];  // remember Hoisting? will be available everywhere, 
+                                //even though it was originally declared inside the loop
+    console.log(element);
+  }
+}</pre>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Scope Revisited</h2>
+    </hgroup>
+    <article>
+      <p>Lets now modify this code to take the the array of values and create an array of functions that return the original values.</p>
+      
+      <pre class="prettyprint" data-lang="javascript">
+        function Method1(){
+          var elements = [0, 1, 2, 3, 4, 5],
+              functions= [];
+
+          for(var i = 0; i < elements.length; i++) {
+            var element = elements[i];
+            <b>functions.push(function() {
+              console.log(element);
+            });</b>
+          }
+
+          functions[3]();
+        }
+      </pre>
+      <aside class="note">
+      <section class="achievment-unlocked">
+        <img src="images/achievementunlockedjavascriptpadawan.png" >
+        <footer class="source">Source: http://bit.ly/QFQbGd</footer>
+      </section>
+    </aside>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Scope Revisited</h2>
+    </hgroup>
+    <article>
+      <p>So what is the result of the function call?</p>
+      <pre class="prettyprint" data-lang="javascript">
+        function Method1(){
+          var elements = [0, 1, 2, 3, 4, 5],
+              functions= [];
+
+          for(var i = 0; i < elements.length; i++) {
+            var element = elements[i];
+            functions.push(function() {
+              console.log(element);
+            });
+          }
+
+          <b>functions[3]();</b>
+        }
+      </pre>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Scope Revisited</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+        functions[3]();  // 5
+      </pre>
+      
+      <p>As discussed before, JavaScript does not have "Block Scope" thus the for loop has not introduced new scope.</p>
+      <p>This means that each time the element variable is accessed, the same memory location is updated, rather than a loop iteration specific variable as one would expect in C#</p>
+      <iframe data-src="http://www.watbutton.com/" class="wat"></iframe>
+      
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Scope Revisited</h2>
+    </hgroup>
+    <article>
+      
+      <p>For simplicity we will just wrap our for block in an anonymous, auto executing function, (often referred to a closure) and pass the element parameter into this function.</p>
+      
+      <pre class="prettyprint" data-lang="javascript">
+  for (i = 0; i < elements.length; i++) {
+
+     <b> (function (element) {                    // start of closure</b>
+
+          functions.push(
+              function() {
+                  console.log(element);
+              });
+          
+     <b> }(elements[i]));                         // end of closure</b>
+  }
+      </pre>
+      
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Scope Revisited</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+        functions[3]();  // 3
+      </pre>
+      <p>We now log 3 as originally expected.</p>
+      <p>The code is now similar to the C# example (scope wise) as the element variable is declared, assigned used and destroyed within the for loop.</p> 
+      <p>This is because Hoisting moves variables to the top of a function, the closure stops it bubbling up to the same location as the other variable declarations.</p>
+      
+    </article>
+  </slide>
+  <!--Patrick's slides-->
+    <slide>
+        <hgroup>
+        <h2>Code Structure</h2>
+        </hgroup>
+            <article class="smaller">
+               
+                <div class="build">
+                        <pre class="prettyprint" data-lang="c#">
+{
+    var a = 5;
+    var b = a;
+}
+var b = a; //a does not exist
+                        </pre>
+                     <ul class="build">
+                        <li>The key to structuring code in JS is scope.</li>
+                        <li>Scope is defined by functions.</li>
+                        <li>To place your code into its own scope it needs to be enclosed by a function.</li>
+                    </ul>
+                        <pre class="prettyprint" data-lang="javascript">
+<b>(function(){</b>
+    var a=5;
+    var b=a;//5
+<b>})(); //self-executing anonymous function to introduce scope.</b>
+var b=a;//undefined
+                         </pre>
+                    </div>
+            </article>
+        </slide>
+    <slide>
+        <hgroup>
+        <h2>Code Structure 2</h2>
+        </hgroup>
+            <article class="smaller">
+                <div class="build">
+                    <ul>
+                        <li>Self-executing anonymous are used to divide the code base and move things out of the global scope.</li>
+                        <li>If you want to define a bunch of functions but you don't need them in global scope, you wrap them in a self-excecuting function.</li>
+                    </ul>
+                    <pre class="prettyprint" data-lang="javascript">
+(function(){
+    var foo = function(){
+    };
+    foo();//available
+})();
+foo();//unavailable
+                        </pre>
+                    <ul><li>To make this separate code usable elsewhere you just have to attach it to an object in the global scope.</li></ul>
+                    <pre class="prettyprint" data-lang="javascript">
+var GlobalObject = {};
+(function(){
+    var bar = function(){...};
+    GlobalObject.foo = function(){
+        bar();
+    };
+})();
+GlobalObject.foo();
+                    </pre>
+                    </div>
+            </article>
+    </slide>
+    <slide>
+    <hgroup>
+    <h2>Code Structure 3</h2>
+    </hgroup>
+        <article class="smaller">
+            <div class="build">
+                <pre class="prettyprint" data-lang="c#">
+namespace Product
+{
+  public static class MyStaticClass
+  {
+    private static int a = 5;
+    public static int Foo()
+    {
+        return a;
+    }
+  }
+}
+Product.MyStaticClass.Foo();
+                </pre>
+                    <pre class="prettyprint" data-lang="javascript">
+var Product = {};//simple object serves as a namespace.
+Product.MyStaticObject={}; //simple object serves as the container for our static functions
+(function(){
+    var a = 5;
+    Product.MyStaticObject.foo = function(){
+        return a;
+    }
+})();//self-executing anonymous function to introduce scope.
+Product.MyStaticObject.foo();
+                </pre>
+                </div>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>Classes 1</h2>
+        </hgroup>
+        <article class="smaller">
+            <p>There are no classes in JavaScript but there are several features you can use to get similar things.</p>
+            <div class="build"><p>Option: Use simple objects instead of classes.</p></div>
+            <ul class="build">
+                <li>
+                    <p>Objects to simply group some functions and properties.</p>
+                <pre class="prettyprint" data-lang="javascript">
+var person = {};
+person.name = 'Patrick';
+person.birthday = '15/03/1983';
+person.getAge = function(){};
+                </pre>
+                </li>
+                <li>
+                    <p>Or the same in JSON-style.</p>
+                    <pre class="prettyprint" data-lang="javascript">
+var person = {
+    name:'Patrick',
+    birthday:'15/03/1983',
+    getAge = function(){
+        //logic
+    }
+}
+                    </pre>
+                </li>
+            </ul>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>Classes 2</h2>
+        </hgroup>
+        <article class="smaller">
+            <p>Defining a 'class' by using the following facts:</p>
+            <ul class="build">
+                <li>1. A function is an object.</li>
+                <li>2. You can create a new instance of an object via the <b>new</b> keyword</li>
+                <li>Example: 
+                    <pre class="prettyprint" data-lang="javascript">
+var Person = function (name){
+    this.name = name;
+};
+var presenter1 = new Person('Maurice');
+var presenter2 = new Person('Patrick');
+                    </pre>
+                </li>
+                <li>
+                    Since a function is an object you could also attach more functions.
+                    <pre class="prettyprint" data-lang="javascript">
+var Person = function (name, birthday){
+    this.name = name; this.birthday=birthday;
+    <b>this.getAge =function(){
+        //logic
+    };</b>
+};
+var presenter1 = new Person('Maurice');
+var presenter2 = new Person('Patrick');
+                    </pre>
+                </li>
+            </ul>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>Classes 3</h2>
+        </hgroup>
+        <article class="smaller">
+            <p>My preferred option using the JavaScript <b>prototype</b> object.</p>
+           
+            <pre class="prettyprint" data-lang="javascript">
+var Person = function(name, birthdate){ <b>//think of this as the constructor</b>
+    this.name = name;
+    this.birthdate = birthdate;
+};
+(function(){
+    <b>//think of this as the class defintion</b>
+    <b>var p = Person.prototype;</b>
+    p.getAge = function(){
+        //logic using this.birthdate;
+    };
+})(); //scope only available to the class definition
+
+var presenter2 = new Person('Patrick','15/03/1983');
+presenter2.getAge();
+             </pre>
+            <div class="build">
+                <p><b>Prototype:</b> The prototype of an object defines the properties and methods which are available on all instances of the object.</p>
+            </div>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>C# vs. JavaScript Example</h2>
+        </hgroup>
+        <article class="smaller">
+            <pre class="prettyprint" data-lang="c#">
+public class Person
+{
+    public Person (string name, DateTime birthday)
+    {
+        this.Name = name;
+        this.Birthday = birthday;
+    }
+    //Name and Birthday properties omitted
+    public int GetAge()
+    {
+        //logic
+    }
+}
+</pre>
+<pre class="prettyprint" data-lang="javascript">
+var Person = function(name, birthday){
+    this.name = name;
+    this.birthday = birthday;
+};
+(function(){
+    <b>var p = Person.prototype;</b>
+    p.getAge =function(){
+        //logic
+    };
+})();
+</pre>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>Advanced Concept: JavaScript inheritance.</h2>
+        </hgroup>
+        <article class="smaller">
+            <div class="build">
+                <p>Inheriting properties/methods from other objects is also possible in JavaScript.</p>
+<pre class="prettyprint" data-lang="javascript">
+var DisplayObject = function(x, y){
+    this.x = x;
+    this.y = y;
+};
+
+var Container = function(x, y){
+     //roughly equivalent with :base(..) in C#.
+    <b>DisplayObject.apply(this, arguments);</b>
+};
+(function(){
+    //this effectively says that any instance of Container
+    //should have the same properties/methods as a DisplayObject
+    <b>Container.prototype = new DisplayObject();</b>
+
+    //define additional methods/properties for Container objects.
+    var p = Container.prototype;
+    p.addChild = function(){};
+})();
+</pre>
+
+            <p><b>.apply()</b> calls a method with an array of arguments and <b>defines</b> what <b>this</b> is.</p>
+            <p><b>arguments</b> holds the arguments passed to a function.</p>
+        </div>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>Forging your tool set to suit your C# mind.</h2>
+        </hgroup>
+        <article class="smaller">
+            <ul class="build">
+                <li>Dictionary/Hashtable</li>
+                <li>Events</li>
+                <li>
+                    LINQ extension methods (mostly IEnumerable&lt;T&gt; methods)
+                    <ul>
+                        <li>.Where() => .filter()</li>
+                        <li>.Select() => .map()</li>
+                        <li>.Except() => ?</li>
+                        <li>.Count(filter) / .Max(filter) / .Sum(filter) / .Average(filter) => ?</li>
+                        <li>.FirstOrDefault(filter) / .LastOrDefault(filter) => ?</li>
+                        <li>.GroupBy() => ?</li>
+                    </ul>
+                </li>
+                <li>
+                    Other methods I simply got used to
+                    <ul>
+                        <li>.format()</li>
+                        <li>...</li>
+                    </ul>
+                </li>
+            </ul>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>My number 1 requirement for a programming language?</h2>
+        </hgroup>
+        <article class="smaller">
+            <div class="build">
+                <h3>Extension methods!</h3>
+                <ul>
+                    <li>I simply re-implemented helper methods by extending the <b>prototype</b> objects.
+                        <pre class="prettyprint" data-lang="javascript">
+Array.prototype.first = function (filter) {
+	if (!filter) {
+		if (this.length > 0)
+			return this[0];
+		return null;
+	}
+
+	for (var i = 0; i < this.length; i++) {
+		var obj = this[i];
+		if (filter(obj))
+			return obj;
+	}
+	return null;
+};
+
+//usage
+[1,2,3,4,5,6].first(function(n){ return n>4; }); //like .FirstOrDefault((n)=>{return n>4;}));
+                        </pre>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </slide>
+        <slide>
+        <hgroup>
+            <h2>More extension examples</h2>
+        </hgroup>
+        <article class="smaller">
+            <div class="build">
+                        <pre class="prettyprint" data-lang="javascript">
+Array.prototype.insertAt = function (index, obj) {
+	this.splice(index, 0, obj);
+};
+
+Array.prototype.skip = function (count) {
+	if (this.length < count)
+		return [];
+	return this.slice(count, (this.length - count) + 1);
+};
+
+//http://stackoverflow.com/a/4673436/10779
+String.prototype.format = function () {
+	var args = arguments;
+	return this.replace(/{(\d+)}/g, function (match, number) {
+		return typeof args[number] != 'undefined'
+    ? args[number] : match;
+	});
+};
+
+Number.prototype.clamp = function (min, max) {
+	return Math.min(Math.max(this, min), max);
+};
+</pre>
+                <p>Hint: You might want to check for existing functions before overwriting them on prototype objects.</p>
+            </div>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>Dictionaries</h2>
+        </hgroup>
+        <article>
+            <div class="build">
+                <p>There is no C# like dictionary in JavaScript but a simple key/value pair holder is easy to come by.</p>
+                <pre class="prettyprint" data-lang="javascript">
+var dict = {}; //use a simple object as a dictionary
+dict.myKey = value;
+//or like this
+dict['stringKey']= value;
+
+//check for value
+if (dict.myKey!=undefined){
+}
+if (dict['stringKey']!=undefined){
+}
+//access value
+dict.myKey;
+dict['stringKey'];
+              </pre>
+            </div>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>Dictionaries 2</h2>
+        </hgroup>
+        <article class="smaller">
+            <div class="build">
+                <p>Iterate over keys</p>
+                <pre class="prettyprint" data-lang="javascript">
+var dict = {};
+for (var key in Object.keys(dict)){
+}
+
+//or, more often you see this:
+for (var key in dict){
+    //.hasOwnProperty returns false if the property is from a prototype object.
+    if(!dict.<b>hasOwnProperty(key)</b>)
+        continue;
+    var value = dict[key];
+}
+                </pre>
+                <p>To use a key that is not a string or a number you can use an additional array and use the index as the key.</p>
+                <pre class="prettyprint" data-lang="javascript">
+var keyArray = [obj1, obj2, obj3];
+var dict = {};
+dict[keyArray.indexOf(obj1)]=value;
+
+if (dict[keyArray.indexOf(obj3)] != undefined){
+}
+                </pre>
+            </div>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>Events</h2>
+        </hgroup>
+        <article class="smaller">
+            <div class="build">
+                <p>It's simple to respond to events from the HTML DOM</p>
+                <pre class="prettyprint" data-lang="html">
+&lt;input id="myButton" onclick="UI.onClick()" /&gt;
+                </pre>
+                <pre class="prettyprint" data-lang="javascript">
+var UI = {};
+UI.onClick = function(e){
+};
+                </pre>
+                <p>You can also easily do the same thing from code alone</p>
+                <pre class="prettyprint" data-lang="javascript">
+var myButton = document.getElementById('myButton');
+myButton.onclick = function(e){
+};
+                </pre>
+                <p>But there is no built-in way to define events on your own objects.</p>
+            </div>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>Events 2</h2>
+        </hgroup>
+        <article class="smaller">
+            <div class="build">
+                <p>Events in C# are multicast delegates which essentially means a list of methods which are called when the event fires.</p>
+                <p>Given this definition we can create our own event implementation:</p>
+                <pre class="prettyprint" data-lang="javascript">
+var EventSource = {};
+(function(){
+    var p = EventSource.prototype;
+    p._events = {}; //dictionary to store event handlers
+    p.on = function(key, handler){
+        if (this._events[key]==undefined)){
+                this._listeners[key]=[];
+        }
+        this._events[key].push(handler);
+    };
+    p.off = function(key, handler){
+        if (this._events[key]!=undefined && this._events[key].indexOf(handler)!=-1)){
+            this._events[key].splice(this._events[key].indexOf(handler), 1); //splice (startIndex, numberToRemove)
+        }
+    };
+    p._raiseEvent = function(key){
+        var handlers = this._events[key];
+        for (var i=0;i&lt;handlers.length;i++){
+            handlers[i]();
+        }
+    };
+})();
+                </pre>
+            </div>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>Events 3</h2>
+        </hgroup>
+        <article class="smaller">
+            <div class="build">
+                <p>Usage is simple</p>
+                <pre class="prettyprint" data-lang="javascript">
+var MyObject = {};
+(function(){
+    MyObject.prototype = new EventSource(); //inherit methods/properties from EventSource
+    var p = MyObject.prototype;
+    p.doSomething = function(){
+        this._raiseEvent('somethinghappened');
+    };
+})();
+//somewhere else
+instance.on('somethinghappened',function(){
+    //handler
+});
+                </pre>
+            </div>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>Common pitfalls</h2>
+        </hgroup>
+        <article class="smaller">
+            <div class="build">
+                <p>Usage of <b>this</b></p>
+                <pre class="prettyprint" data-lang="javascript">
+var allPresenters = [
+	{ id: 0, name: 'Maurice', talks: [0, 2] },
+	{ id: 1, name: 'Patrick', talks: [0, 3] }
+];
+var DDDTalk = function (talkId, name) {
+	this.talkId = talkId; this.name = name;
+};
+(function () {
+	var p = DDDTalk.prototype;
+	<b>p.getPresenters = function (arr) {
+		return arr.filter(function (item) {
+			return item.talks.indexOf(this.talkId) != -1;
+		});
+	};</b>
+})();
+    var talk = new DDDTalk(0, 'JavaScript for C# devs');
+    var presenters = talk.getPresenters(allPresenters);
+}
+            </div>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>Common pitfalls (this)</h2>
+        </hgroup>
+        <article class="smaller">
+            <div class="build">
+                <p>Simple solution</p>
+                <pre class="prettyprint" data-lang="javascript">
+(function () {
+	var p = DDDTalk.prototype;
+	p.getPresenters = function (arr) {
+            <b>var id = this.talkId;</b>
+		return arr.filter(function (item) {
+			return item.talks.indexOf(<b>id</b>) != -1;
+		});
+	};
+})();
+                    </pre>
+                <pre class="prettyprint" data-lang="javascript">
+(function () {
+	var p = DDDTalk.prototype;
+	p.getPresenters = function (arr) {
+            <b>var that = this;</b>
+		return arr.filter(function (item) {
+			return item.talks.indexOf(<b>that.talkId</b>) != -1;
+		});
+	};
+})();
+                    </pre>
+            </div>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>Common pitfalls</h2>
+        </hgroup>
+        <article class="smaller">
+            <ul class="build">
+               <li><b>this</b> might not be what you think it is. just keep it in mind when things don't work.</li>
+               <li>
+                   When working with functions/callbacks and variables in for loops, be aware of scope issues.
+				   <div class="build">
+                    <ul>
+                        <li>You will likely go half insane because of this at least once.</li>
+                        <li>Just keep calm. Re-read Maurice's blog post and earn the padawan achievement again.</li>
+                        <li>I did it thrice :)</li>
+                    </ul>
+					</div>
+               </li>
+               <li>
+                   typos, syntax errors etc.
+                   <ul class="build">
+                       <li>just be more careful. test early, test often.</li>
+                       <li>and use
+                           <pre data-lang="javascript">'use strict';</pre>
+                           in Visual Studio 2012</li>
+                   </ul>
+               </li>
+                <li>
+                    be careful when using <pre data-lang="javascript">if (value)</pre> to check if a value is set as this will <b>be false if the value is 0</b>. you can use if (value!=undefined) instead.
+                </li>
+            </ul>
+        </article>
+    </slide>
+    <slide>
+        <hgroup>
+            <h2>My Recommendations (Patrick)</h2>
+        </hgroup>
+        <article>
+            <ul class="build">
+                <li>Start with a goal in mind.</li>
+                <li>Start coding.</li>
+                <li>Read code.</li>
+                <li>Read more code.</li>
+                <li>Leave 'architecture' frameworks for later. (You might not need MVVM)</li>
+                <li>Learn jQuery (esp. if you need to do a lot of DOM manipulation).</li>
+                <li>If something is not working: <b>Keep calm and investigate.</b></li>
+                <li>If you don't understand why <b>your own code</b> is working, you should not continue.
+                    <ul>
+                        <li>Don't be the superstitious dev.</li>
+                    </ul>
+                </li>
+                <li>Read Maurice's <a href="http://mauricebutler.wordpress.com/2011/11/07/getting-started-with-javascript-with-a-c-background/">blog post</a> on hoisting and scope.</li>
+            </ul>
+        </article>
+    </slide>
+  <slide class="title-slide segue nobackground">
+    <hgroup class="auto-fadein">
+      <h1>Thanks!</h1>
+    </hgroup>
+      
+    <div class="presenter"><b>Maurice Butler</b></div>
+    <div>@ButlerMaurice</div>
+    <div>Meldr / The Locker Project</div>
+    <div class="presenter"><b>Patrick Klug</b></div>
+    <div>@PatrickKlug</div>
+    <div>Greenheart Games</div>
+    <br/>
+    <div>Live Backchannel: #dddbrisbane</div>
+
+  </slide>
+     
+     
+
+  <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>
